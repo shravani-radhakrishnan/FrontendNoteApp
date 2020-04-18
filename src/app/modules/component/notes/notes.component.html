@@ -1,0 +1,44 @@
+<div class="notes-page">
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        NoteApp
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav-links">
+      <a (click)="addNote()"><img src="../../../../assets/icons/add.png"></a>
+      <a (click)="deleteNote()"><img src="../../../../assets/icons/delete.png"></a>
+      <a><input type="text" class="search" name="search" [(ngModel)]="search" (input)="searchChanged()"
+          placeholder="Search.."></a>
+    </div>
+  </div>
+  <div class="col-12 notes-container">
+    <div class="row">
+      <div class="col-4 left-session">
+        <div class="card note-side-view" *ngFor="let list of notesList;let i=index;"
+        [ngStyle]="{'background-color':activeIndex === i ? 'yellow' : 'white' }"
+          (click)="activeNote(i)">
+          <div class="card-title">{{list.title}}</div>
+          <div class="card-body"><span class="time">{{list.time}}</span><span class="content">{{list.content}}</span></div>
+        </div>
+      </div>
+      <div class="col-8 right-session">
+        <div class="notes-details" *ngIf="displayDescription">
+          <input type="text" class="form-control" id="title" required [(ngModel)]="note.title" name="title"
+            #title="ngModel" (input)="noteChanged()" placeholder="Title">
+          <input type="text" class="form-control" id="content" required [(ngModel)]="note.content" name="content"
+            #content="ngModel" placeholder="Content" (input)="noteChanged()">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

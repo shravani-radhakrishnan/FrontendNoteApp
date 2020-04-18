@@ -1,0 +1,150 @@
+:root {
+  //Start New Color code
+  --salmon-pink: #fc6f7f;
+  --coral-pink: #ff595e;
+  --pinkish: #e06c79;
+  --warm-pink: #fa5f6e;
+  --rosy-pink: #f06070;
+  --red-pink: #f13d5b;
+  --cool-grey: #919299;
+  --slate-grey: #68686f;
+  --alto-grey: #d9d9d9;
+  --nurse-grey: #eff2ef;
+  --greyish-50: #80b8b8b8;
+  --white: #ffffff;
+  --weird-green: #58d896;
+  --emerald-green: #54d97c;
+  --spruce-green: #10623f;
+  --greenish: #44af69;
+  --dodger-blue: #3185fc;
+  --light-royal-blue: #3d51ff;
+  --aqua-blue: #98c1d9;
+  --dark-black: #262730;
+  --cod-black: #1b1b1b;
+  --shk-black: #202023;
+  --light-gold: #ffd046;
+
+  // End new color code
+
+  --gray: #282c3f;
+  --light-gray: #d4d5d9;
+  --light-white: #f9faf9;
+  --pink: #ce255c;
+  --white: #fff;
+  --grey: #f7fafc;
+  --light-yellow: #ffd046;
+  --yellow-orange-mix: #ffca55;
+  --coral: #fe5b60;
+  --light-coral: #ff8754;
+  --light-blue: #5487ff;
+  --light-purple: #8c54ff;
+  --light-green: #2fd66b;
+  --light-brown: #783c23;
+  --light-pink: #fe5069;
+  // --light-black:#3d4152;
+  --light-black: #171a29;
+  //common color variable
+  --heading-clr: var(--gray);
+  --border-clr: var(--light-gray);
+  --main-color: var(--pink);
+  --white-color: var(--white);
+  --text-color: var(--light-black);
+
+  --current-loc-txt: var(--rosy-pink);
+
+  //Input field related color class
+  --inp-bg-clr: var(--nurse-grey);
+  --inp-border-clr: var(--alto-grey);
+  --inp-txt-clr: var(--dark-black);
+
+  --hover-pink-clr: var(--coral-pink);
+
+  //Bottom nav bar
+  --btm-nav-itm-clr: var(--cod-black);
+  --btm-nav-active-itm-clr: var(--salmon-pink);
+}
+
+//we are using below color class for globally direct in html
+.coral-pink-clr {
+  color: var(--coral-pink);
+}
+.red-pink-clr {
+  color: var(--red-pink);
+}
+.rosy-pink-clr {
+  color: var(--rosy-pink);
+}
+.warm-pink-clr {
+  color: var(--warm-pink);
+}
+
+.salmon-pink-clr {
+  color: var(--salmon-pink);
+}
+
+.light-gold-clr {
+  color: var(--light-gold);
+}
+.shk-black-clr {
+  color: var(--shk-black);
+}
+.cod-black-clr {
+  color: var(--cod-black);
+}
+.dark-black-clr {
+  color: var(--dark-black);
+}
+
+.aqua-blue-clr {
+  color: var(--aqua-blue);
+}
+
+.light-royal-blue-clr {
+  color: var(--light-royal-blue);
+}
+
+.dodger-blue-clr {
+  color: var(--dodger-blue);
+}
+
+.greenish-clr {
+  color: var(--greenish);
+}
+
+.spruce-green-clr {
+  color: var(--spruce-green);
+}
+
+.emerald-green-clr {
+  color: var(--emerald-green);
+}
+
+.weird-green-clr {
+  color: var(--weird-green);
+}
+
+.white-clr {
+  color: var(--white);
+}
+
+.greyish-50-clr {
+  color: var(--greyish-50);
+}
+
+.nurse-grey-clr {
+  color: var(--nurse-grey);
+}
+.alto-grey-clr {
+  color: var(--alto-grey);
+}
+
+.slate-grey-clr {
+  color: var(--slate-grey);
+}
+.cool-grey-clr {
+  color: var(--cool-grey);
+}
+
+.red-pink-clr {
+  color: var(--red-pink);
+}
