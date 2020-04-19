@@ -1,10 +1,19 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { StorageService } from "src/app/core/services/storage.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AppDataService {
   updateNotes = new BehaviorSubject([]);
-  constructor() { }
+
+  constructor(
+    private storageService: StorageService
+  ) {
+    // for getting user info from local  storage
+    // if (this.storageService.getItem("userInfo") !== null) {
+    //   this.updateNotes.next(this.storageService.getItem("userInfo"));
+    // }
+  }
 }

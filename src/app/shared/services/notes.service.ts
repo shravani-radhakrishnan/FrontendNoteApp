@@ -15,19 +15,22 @@ export class NotesService {
     private appData: AppDataService
   ) {}
 
-  loadAllNotes() {
-    let notes = this.storageService.getItem("notes");
-    if (notes != null) {
-      return (this.notes = notes);
-    }
-  }
+  // loadAllNotes() {
+  //   let notes = this.storageService.getItem("notes");
+  //   if (notes != null) {
+  //     return (this.notes = notes);
+  //   }
+  // }
 
+  // To create a note
   createNote(note) {
-    this.notes.push(note);
+    this.notes.unshift(note);
+    console.log("create Note", this, note);
     this.storageService.setItem("notes", this.notes);
     this.appData.updateNotes.next(this.notes);
   }
 
+// to delete a particular note
   removeNote(index) {
     this.notes = this.storageService.getItem("notes");
     console.log("remove note before ", this.notes, index);
@@ -45,14 +48,11 @@ export class NotesService {
     }
   }
 
+  // to update the note when changes are made in card
   updateNote(data, index) {
-    console.log(index,data);
-    this.updateData = this.storageService.getItem('notes');
-    console.log(this.updateData[index]);
+    console.log(index, data);
+    this.updateData = this.storageService.getItem("notes");
     this.updateData[index] = data;
-    // this.updateData.splice(index,1,data);
-    console.log("update data",this.updateData[index]);
     this.storageService.setItem("notes", this.updateData);
     this.appData.updateNotes.next(this.updateData);
-  }
-}
+  }}
