@@ -14,12 +14,14 @@ export class NotesService {
     private storageService: StorageService,
     private appData: AppDataService
   ) {}
+
   loadAllNotes() {
     let notes = this.storageService.getItem("notes");
     if (notes != null) {
       return (this.notes = notes);
     }
   }
+
   createNote(note) {
     this.notes.push(note);
     this.storageService.setItem("notes", this.notes);
@@ -45,7 +47,7 @@ export class NotesService {
 
   updateNote(data, index) {
     console.log(index,data);
-    this.updateData = this.loadAllNotes();
+    this.updateData = this.storageService.getItem('notes');
     console.log(this.updateData[index]);
     this.updateData[index] = data;
     // this.updateData.splice(index,1,data);

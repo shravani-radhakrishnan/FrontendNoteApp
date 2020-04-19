@@ -7,13 +7,13 @@ import { SharedModule } from './shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import {AppDataService} from './shared/services/app-data.service';
-import { SearchHighlightPipe } from './core/pipes/search-highlight.pipe';
+// import { SearchHighlightPipe } from './shared/pipes/search-highlight.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchHighlightPipe
+    // SearchHighlightPipe
     // NavHeaderComponent,
   ],
   imports: [
@@ -23,7 +23,7 @@ import { SearchHighlightPipe } from './core/pipes/search-highlight.pipe';
     AppRoutingModule,
     SharedModule,
   ],
-  exports:[SearchHighlightPipe],
+  exports:[],
   providers: [AppDataService],
   bootstrap: [AppComponent],
 })

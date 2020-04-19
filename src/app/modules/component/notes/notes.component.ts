@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Note } from "src/app/shared/interface/note";
 import { StorageService } from "src/app/core/services/storage.service";
 import { AppDataService } from "src/app/shared/services/app-data.service";
-import { SearchHighlightPipe } from 'src/app/core/pipes/search-highlight.pipe';
+import { SearchHighlightPipe } from 'src/app/shared/pipes/search-highlight.pipe';
 
 @Component({
   selector: "app-notes",
@@ -17,31 +17,35 @@ export class NotesComponent implements OnInit {
   displayDescription: boolean = false;
   noteStorage;
   notesList: any;
-  search: string;
-  highlightText:String;
+  searchText:string;
+  checked:boolean;
   constructor(
     public notesService: NotesService,
     private storageService: StorageService,
     private appData: AppDataService,
-    // public searchHighlight:SearchHighlightPipe
   ) {
     this.appData.updateNotes.subscribe((data) => {
       if (data) {
-        // this.noteStorage = data;
         this.notesList = data;
         if(this.notesList.length < 0){
           this.displayDescription = false;
         }
       } else {
-        // this.noteStorage = this.storageService.getItem("notes");
+        this.noteStorage = this.storageService.getItem("notes");
         this.notesList = this.noteStorage;
       }
-      // this.noteStorage
     });
   }
   ngOnInit(): void {
-    this.notesList = this.notesService.loadAllNotes();
+    this.notesList = this.storageService.getItem("notes");
   }
+
+  // loadAllNotes() {
+  //   let notes = this.storageService.getItem("notes");
+  //   if (notes != null) {
+  //     return (this.notes = notes);
+  //   }
+  // }
 
   addNote() {
     this.noteStorage = this.storageService.getItem("notes");
@@ -72,28 +76,20 @@ export class NotesComponent implements OnInit {
   noteChanged() {
     this.noteStorage = this.storageService.getItem("notes");
     let data = this.noteStorage[this.activeIndex];
-    let copyNote = this.exchangeValues(
-      data.noteId,
-      data.title,
-      data.content,
-    );
-    // need to check logic here
-    this.notesService.updateNote(copyNote,this.activeIndex)
+    data.noteId = this.note.noteId;
+    data.title = this.note.title;
+    data.content = this.note.content;
+    data.time = new Date().toLocaleTimeString();
+    console.log("copyNote--->",data);
+    this.notesService.updateNote(data,this.activeIndex)
   }
 
-  exchangeValues(id, title, content,) {
-    let copyNotes = {
-      noteId: id,
-      title: title,
-      content: content,
-      time: new Date().toLocaleTimeString(),
-    };
-    return copyNotes;
-
+  searchContent(e){
+    this.searchText = e.target.value;
+    console.log(this.searchText);
   }
 
-  searchChanged(){
-    this.highlightText = this.search;
-    console.log(this.highlightText);
+  toggleCheck(e){
+    this.checked = e.target.checked;
   }
  }
