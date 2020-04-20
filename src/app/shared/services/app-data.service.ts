@@ -11,6 +11,9 @@ export class AppDataService {
   constructor(
     private storageService: StorageService
   ) {
+    console.log("testing");
+    console.log(this.storageService.getItem("notes"))
+
     // for getting user info from local  storage
     // if (this.storageService.getItem("userInfo") !== null) {
     //   this.updateNotes.next(this.storageService.getItem("userInfo"));

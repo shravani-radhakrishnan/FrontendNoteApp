@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from "@angular/core";
+import { Component, OnInit, HostListener, OnDestroy } from "@angular/core";
 import { NotesService } from "../../../shared/services/notes.service";
 import { ActivatedRoute } from "@angular/router";
 import { Note } from "src/app/shared/interface/note";
@@ -11,7 +11,7 @@ import { SearchHighlightPipe } from "src/app/shared/pipes/search-highlight.pipe"
   templateUrl: "./notes.component.html",
   styleUrls: ["./notes.component.scss"],
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent implements OnInit, OnDestroy {
   note: Note;
   activeIndex: number;
   displayDescription: boolean = false;
@@ -36,7 +36,9 @@ export class NotesComponent implements OnInit {
     private storageService: StorageService,
     private appData: AppDataService
   ) {
+    console.log("componet")
     this.appData.updateNotes.subscribe((data) => {
+      console.log(this.storageService.getItem('notes'))
       if (data) {
         this.notesList = data;
         if (this.notesList.length < 0) {
@@ -48,11 +50,14 @@ export class NotesComponent implements OnInit {
       }
     });
   }
+  ngOnDestroy(): void {
+    let data = this.storageService.getItem("notes");
+    console.log(data)
+  }
 
   ngOnInit(): void {
     this.notesList = this.storageService.getItem("notes");
   }
-
   // adding note
   addNote() {
     this.notes = this.storageService.getItem("notes");
@@ -76,7 +81,7 @@ export class NotesComponent implements OnInit {
   activeNote(index) {
     this.activeIndex = index;
     console.log(this.activeIndex);
-    let data = this.storageService.getItem('notes');
+    let data = this.storageService.getItem("notes");
     this.note.time = data[index].time;
     this.note.title = data[index].title;
     this.note.content = data[index].content;

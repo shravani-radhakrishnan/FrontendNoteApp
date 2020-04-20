@@ -25,7 +25,7 @@ export class NotesService {
   // To create a note
   createNote(note) {
     this.notes.unshift(note);
-    console.log("create Note", this, note);
+    console.log("create Note", this, note,this.storageService.getItem('notes'));
     this.storageService.setItem("notes", this.notes);
     this.appData.updateNotes.next(this.notes);
   }
@@ -39,7 +39,7 @@ export class NotesService {
         if (index === i) {
           this.notes.splice(i, 1);
         }
-        console.log("after note before ", this.notes);
+        console.log("remove note",this.storageService.getItem('notes'));
         this.storageService.setItem("notes", this.notes);
         this.appData.updateNotes.next(this.notes);
       });
@@ -53,6 +53,7 @@ export class NotesService {
     console.log(index, data);
     this.updateData = this.storageService.getItem("notes");
     this.updateData[index] = data;
+    console.log("update note",this.storageService.getItem('notes'));
     this.storageService.setItem("notes", this.updateData);
     this.appData.updateNotes.next(this.updateData);
   }}
